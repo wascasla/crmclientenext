@@ -14,8 +14,10 @@ const authLink = setContext((_, { headers }) => {
     // Leer el storage almacenado
     const token = localStorage.getItem('token');
     return {
-        ...headers,
-        authorization: token ? `Bearer ${token}` : ''
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : ''
+        }
     }
 });
 
